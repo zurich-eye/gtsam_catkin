@@ -29,20 +29,7 @@ if(gtsam_FOUND)
   message("+++ Found source version of GTSAM (using ${GTSAM_INCLUDE_DIR})")
   add_dependencies(${PROJECT_NAME}_package gtsam)
 else()
-  message("--- No source version of GTSAM found. Downloading.")
-  include(ExternalProject)
-  file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
-  ExternalProject_Add(gtsam_src
-    URL https://research.cc.gatech.edu/borg/sites/edu.borg/files/downloads/gtsam-3.2.1.tgz
-    UPDATE_COMMAND ""
-    CMAKE_ARGS
-      -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX} 
-      -DCMAKE_BUILD_TYPE=Release
-    BUILD_COMMAND ${CMAKE_COMMAND} --build ./ --target install
-    INSTALL_COMMAND ""
-    )
-  ExternalProject_CatkinInstall(gtsam_src)
-  add_dependencies(${PROJECT_NAME}_package gtsam_src)
+  message("--- No source version of GTSAM found.")
 endif()
 
 cs_install()
