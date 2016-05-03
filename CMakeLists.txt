@@ -33,7 +33,8 @@ else()
   include(ExternalProject)
   file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
   ExternalProject_Add(gtsam_src
-    URL https://research.cc.gatech.edu/borg/sites/edu.borg/files/downloads/gtsam-3.2.1.tgz
+    GIT_REPOSITORY https://bitbucket.org/gtborg/gtsam.git
+    GIT_TAG f1f6b82
     UPDATE_COMMAND ""
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX} 
